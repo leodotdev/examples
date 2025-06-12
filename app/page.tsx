@@ -968,7 +968,7 @@ export default function Home() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="min-h-[75vh] flex items-center py-24 px-8 lg:px-16 bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50">
+        <section className="min-h-[75vh] flex items-center py-24 px-8 lg:px-16 bg-muted/30">
           <div className="max-w-7xl mx-auto w-full">
             {/* Section Header */}
             <div className="text-center mb-20">
