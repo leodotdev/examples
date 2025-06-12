@@ -57,7 +57,7 @@ export default function Home() {
 
                 <P className="text-muted-foreground text-xl mb-10 leading-relaxed">
                   Where creativity meets code and impossible becomes inevitable.
-                  Build products that don&apos;t just work—they spark joy and change
+                  Build products that don't just work—they spark joy and change
                   how people see the world.
                 </P>
 
@@ -194,7 +194,7 @@ export default function Home() {
                 </h3>
                 <p className="text-muted-foreground text-lg leading-relaxed">
                   Your data sleeps soundly behind walls of encryption.
-                  Military-grade protection that&apos;s so seamless, you&apos;ll forget
+                  Military-grade protection that's so seamless, you'll forget
                   security was ever a concern.
                 </p>
               </div>
@@ -433,7 +433,7 @@ export default function Home() {
                   </h4>
                   <p className="text-muted-foreground text-sm">
                     Every partner is handpicked by our taste-makers. Quality
-                    so high, mediocrity isn&apos;t even invited to the party.
+                    so high, mediocrity isn't even invited to the party.
                   </p>
                 </div>
               </div>
@@ -723,7 +723,7 @@ export default function Home() {
                   Digital Dynasty
                 </h3>
                 <p className="text-muted-foreground mb-6">
-                  When you&apos;re ready to rule the digital realm without limits.
+                  When you're ready to rule the digital realm without limits.
                 </p>
 
                 <div className="mb-8">
@@ -858,7 +858,7 @@ export default function Home() {
             </form>
 
             <p className="text-muted-foreground text-lg">
-              Your data is safer than your grandmother&apos;s secret recipe. Read our{" "}
+              Your data is safer than your grandmother's secret recipe. Read our{" "}
               <a
                 href="#"
                 className="text-blue-600 hover:text-blue-700 font-medium"
@@ -989,8 +989,8 @@ export default function Home() {
               {/* Testimonial 1 */}
               <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
-                  &quot;This platform doesn&apos;t just solve problems—it anticipates them.
-                  It&apos;s like having a crystal ball for my business.&quot;
+                  "This platform doesn't just solve problems—it anticipates them.
+                  It's like having a crystal ball for my business."
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-gradient-to-br from-pink-400 to-red-400 rounded-full flex items-center justify-center">
@@ -1010,9 +1010,9 @@ export default function Home() {
               {/* Testimonial 2 - Larger featured testimonial */}
               <div className="bg-card rounded-xl p-8 shadow-sm lg:col-span-1 lg:row-span-2 flex flex-col justify-center">
                 <p className="text-foreground mb-8 leading-relaxed text-lg">
-                  &quot;I&apos;ve tried every platform out there, but this one reads my mind.
-                  It&apos;s not just a tool—it&apos;s like having a digital extension of my brain
-                  that happens to be way smarter than me.&quot;
+                  "I've tried every platform out there, but this one reads my mind.
+                  It's not just a tool—it's like having a digital extension of my brain
+                  that happens to be way smarter than me."
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full flex items-center justify-center">
@@ -1038,8 +1038,8 @@ export default function Home() {
               {/* Testimonial 3 */}
               <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
-                  &quot;Finally, a platform that gets it. My productivity has
-                  tripled and my stress has vanished into thin air.&quot;
+                  "Finally, a platform that gets it. My productivity has
+                  tripled and my stress has vanished into thin air."
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-blue-400 rounded-full flex items-center justify-center">
@@ -1059,8 +1059,8 @@ export default function Home() {
               {/* Testimonial 4 */}
               <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
-                  &quot;I was skeptical at first, but this changed everything.
-                  My clients think I&apos;m a wizard now.&quot;
+                  "I was skeptical at first, but this changed everything.
+                  My clients think I'm a wizard now."
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full flex items-center justify-center">
@@ -1080,8 +1080,8 @@ export default function Home() {
               {/* Testimonial 5 */}
               <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
-                  &quot;The learning curve? What learning curve? I was up and
-                  running in minutes, creating like never before.&quot;
+                  "The learning curve? What learning curve? I was up and
+                  running in minutes, creating like never before."
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center">
@@ -1101,8 +1101,8 @@ export default function Home() {
               {/* Testimonial 6 */}
               <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
-                  &quot;My competition is still figuring out what hit them.
-                  This platform is my secret weapon.&quot;
+                  "My competition is still figuring out what hit them.
+                  This platform is my secret weapon."
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-gradient-to-br from-indigo-400 to-blue-400 rounded-full flex items-center justify-center">
@@ -1122,8 +1122,8 @@ export default function Home() {
               {/* Additional testimonials for the right column */}
               <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
-                  &quot;Three words: game absolutely changed. This is the future
-                  and I&apos;m living in it.&quot;
+                  "Three words: game absolutely changed. This is the future
+                  and I'm living in it."
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-teal-400 rounded-full flex items-center justify-center">
@@ -1182,8 +1182,8 @@ export default function Home() {
 
               <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
-                  &quot;ROI through the roof. This investment paid for itself
-                  in the first week. Best decision I&apos;ve made this year.&quot;
+                  "ROI through the roof. This investment paid for itself
+                  in the first week. Best decision I've made this year."
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-yellow-400 rounded-full flex items-center justify-center">
@@ -1202,8 +1202,8 @@ export default function Home() {
 
               <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
-                  &quot;The support team is incredible. They solved my problem
-                  before I even knew I had one. Mind readers!&quot;
+                  "The support team is incredible. They solved my problem
+                  before I even knew I had one. Mind readers!"
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-gradient-to-br from-violet-400 to-purple-400 rounded-full flex items-center justify-center">
@@ -1231,7 +1231,7 @@ export default function Home() {
               <div className="order-2 lg:order-1">
                 <div className="max-w-xl">
                   <H1 className="text-foreground mb-6 text-4xl lg:text-6xl font-bold leading-tight">
-                    Let&apos;s work
+                    Let's work
                     <br />
                     together
                   </H1>
@@ -1417,7 +1417,7 @@ export default function Home() {
                 leadership
               </H1>
               <P className="text-muted-foreground text-xl leading-relaxed max-w-2xl">
-                We&apos;re a dynamic group of individuals who are passionate about
+                We're a dynamic group of individuals who are passionate about
                 what we do and dedicated to delivering the best results for our
                 clients.
               </P>
@@ -1605,7 +1605,7 @@ export default function Home() {
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed pb-8">
                   Not replace—supercharge. Your team will become unstoppable
-                  when they&apos;re armed with tools that think as fast as they do.
+                  when they're armed with tools that think as fast as they do.
                 </AccordionContent>
               </AccordionItem>
 
@@ -1622,7 +1622,7 @@ export default function Home() {
 
               <AccordionItem value="item-4" className="border-border">
                 <AccordionTrigger className="text-xl font-semibold text-foreground py-8 hover:no-underline">
-                  What if I&apos;m not technical?
+                  What if I'm not technical?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed pb-8">
                   Perfect! Our platform was designed for humans, not robots.
@@ -1636,7 +1636,7 @@ export default function Home() {
                   Can I cancel anytime?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed pb-8">
-                  Absolutely. Though we&apos;re confident you&apos;ll be too busy
+                  Absolutely. Though we're confident you'll be too busy
                   counting your success to think about leaving.
                 </AccordionContent>
               </AccordionItem>
@@ -1648,7 +1648,7 @@ export default function Home() {
                 <AccordionContent className="text-muted-foreground leading-relaxed pb-8">
                   Safer than a secret in a vault guarded by ninjas.
                   We use military-grade encryption and our security team
-                  never sleeps (seriously, they&apos;re vampires).
+                  never sleeps (seriously, they're vampires).
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
