@@ -10,7 +10,8 @@ import {
   IconPuzzle, 
   IconRobot, 
   IconPlayerPlay,
-  IconPhone 
+  IconPhone,
+  IconChevronDown 
 } from "@tabler/icons-react";
 import {
   NavigationMenu,
@@ -263,17 +264,7 @@ export default function Header() {
                       className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base font-semibold text-foreground hover:bg-accent"
                     >
                       Product
-                      <svg
-                        className="size-5 flex-none"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
+                      <IconChevronDown className="size-5 flex-none" />
                     </button>
                     <div className="mt-2 space-y-2">
                       <a
