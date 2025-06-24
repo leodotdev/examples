@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
-import { Check, ChevronRight, Circle } from "tabler-icons-react"
+import { IconCheck, IconChevronRight, IconCircle } from "@tabler/icons-react"
 
 import { cn } from "@/lib/utils"
 
@@ -100,7 +100,7 @@ function DropdownMenuCheckboxItem({
     >
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <DropdownMenuPrimitive.ItemIndicator>
-          <Check size={16} />
+          <IconCheck size={16} />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -135,7 +135,7 @@ function DropdownMenuRadioItem({
     >
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <DropdownMenuPrimitive.ItemIndicator>
-          <Circle size={8} className="fill-current" />
+          <IconCircle size={8} className="fill-current" />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -217,7 +217,7 @@ function DropdownMenuSubTrigger({
       {...props}
     >
       {children}
-      <ChevronRight size={16} className="ml-auto" />
+      <IconChevronRight size={16} className="ml-auto" />
     </DropdownMenuPrimitive.SubTrigger>
   )
 }
