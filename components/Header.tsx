@@ -1,17 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { 
-  IconMenu2, 
-  IconX, 
-  IconChartPie, 
-  IconUsers, 
-  IconShield, 
-  IconPuzzle, 
-  IconRobot, 
+import {
+  IconMenu2,
+  IconX,
+  IconChartPie,
+  IconUsers,
+  IconShield,
+  IconPuzzle,
+  IconRobot,
   IconPlayerPlay,
   IconPhone,
-  IconChevronDown 
+  IconChevronDown,
 } from "@tabler/icons-react";
 import {
   NavigationMenu,
@@ -197,7 +197,7 @@ export default function Header() {
                 <NavigationMenuLink asChild>
                   <a
                     href="#"
-                    className="text-sm font-semibold text-foreground hover:text-muted-foreground transition-colors"
+                    className="text-sm font-semibold text-foreground transition-colors"
                   >
                     Features
                   </a>
@@ -207,7 +207,7 @@ export default function Header() {
                 <NavigationMenuLink asChild>
                   <a
                     href="#"
-                    className="text-sm font-semibold text-foreground hover:text-muted-foreground transition-colors"
+                    className="text-sm font-semibold text-foreground transition-colors"
                   >
                     Marketplace
                   </a>
@@ -217,7 +217,7 @@ export default function Header() {
                 <NavigationMenuLink asChild>
                   <a
                     href="#"
-                    className="text-sm font-semibold text-foreground hover:text-muted-foreground transition-colors"
+                    className="text-sm font-semibold text-foreground transition-colors"
                   >
                     Company
                   </a>
