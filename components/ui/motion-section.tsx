@@ -1,11 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Section, SectionProps } from "./section";
+import { motion, Variants } from "framer-motion";
+import { ReactNode } from "react";
 import { fadeIn, viewportConfig } from "@/lib/motion";
 
-interface MotionSectionProps extends SectionProps {
-  animation?: any;
+interface MotionSectionProps {
+  children: ReactNode;
+  className?: string;
+  animation?: Variants;
   delay?: number;
 }
 
@@ -13,19 +15,18 @@ export function MotionSection({
   children,
   animation = fadeIn,
   delay = 0,
-  ...props
+  className,
 }: MotionSectionProps) {
   return (
-    <Section asChild {...props}>
-      <motion.section
-        initial="initial"
-        whileInView="animate"
-        viewport={viewportConfig}
-        variants={animation}
-        custom={delay}
-      >
-        {children}
-      </motion.section>
-    </Section>
+    <motion.section
+      className={className}
+      initial="initial"
+      whileInView="animate"
+      viewport={viewportConfig}
+      variants={animation}
+      custom={delay}
+    >
+      {children}
+    </motion.section>
   );
 }

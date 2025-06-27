@@ -38,8 +38,6 @@ import {
   staggerContainer,
   staggerItem,
   slideInFromLeft,
-  slideInFromRight,
-  slideInFromBottom,
   viewportConfig,
 } from "@/lib/motion";
 
@@ -1492,7 +1490,7 @@ export default function Home() {
                 <AccordionTrigger className="text-xl font-semibold text-foreground py-8 hover:no-underline">
                   Is this too good to be true?
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-8">
+                <AccordionContent className="text-muted-foreground leading-relaxed pb-8 pr-12">
                   We get it—it sounds like magic. But thousands of creators are
                   already living proof that sometimes the impossible is just
                   innovation in disguise.
@@ -1503,7 +1501,7 @@ export default function Home() {
                 <AccordionTrigger className="text-xl font-semibold text-foreground py-8 hover:no-underline">
                   Will this replace my entire team?
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-8">
+                <AccordionContent className="text-muted-foreground leading-relaxed pb-8 pr-12">
                   Not replace—supercharge. Your team will become unstoppable
                   when they're armed with tools that think as fast as they do.
                 </AccordionContent>
@@ -1513,7 +1511,7 @@ export default function Home() {
                 <AccordionTrigger className="text-xl font-semibold text-foreground py-8 hover:no-underline">
                   How fast can I see results?
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-8">
+                <AccordionContent className="text-muted-foreground leading-relaxed pb-8 pr-12">
                   Most creators see improvements within 24 hours. Some see magic
                   happen in minutes. It depends how ready you are to embrace the
                   future.
@@ -1524,7 +1522,7 @@ export default function Home() {
                 <AccordionTrigger className="text-xl font-semibold text-foreground py-8 hover:no-underline">
                   What if I'm not technical?
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-8">
+                <AccordionContent className="text-muted-foreground leading-relaxed pb-8 pr-12">
                   Perfect! Our platform was designed for humans, not robots. If
                   you can use a smartphone, you can build digital empires with
                   us.
@@ -1535,7 +1533,7 @@ export default function Home() {
                 <AccordionTrigger className="text-xl font-semibold text-foreground py-8 hover:no-underline">
                   Can I cancel anytime?
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-8">
+                <AccordionContent className="text-muted-foreground leading-relaxed pb-8 pr-12">
                   Absolutely. Though we're confident you'll be too busy counting
                   your success to think about leaving.
                 </AccordionContent>
@@ -1545,7 +1543,7 @@ export default function Home() {
                 <AccordionTrigger className="text-xl font-semibold text-foreground py-8 hover:no-underline">
                   Is my data really safe?
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed pb-8">
+                <AccordionContent className="text-muted-foreground leading-relaxed pb-8 pr-12">
                   Safer than a secret in a vault guarded by ninjas. We use
                   military-grade encryption and our security team never sleeps
                   (seriously, they're vampires).

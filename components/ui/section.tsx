@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
-interface SectionProps {
+export interface SectionProps {
   children: ReactNode
   className?: string
   variant?: 'default' | 'muted' | 'secondary'
