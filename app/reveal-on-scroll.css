@@ -1,0 +1,147 @@
+/**
+ * CSS for reveal-on-scroll animations
+ * Performant animations using transform and opacity
+ */
+
+/* Hero and navbar animations - immediate load */
+.hero-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.nav-animate {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: navSlideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Animation delays for hero elements */
+.hero-animate.delay-1 { animation-delay: 0.2s; }
+.hero-animate.delay-2 { animation-delay: 0.4s; }
+.hero-animate.delay-3 { animation-delay: 0.6s; }
+.hero-animate.delay-4 { animation-delay: 0.8s; }
+
+@keyframes heroFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes navSlideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+/* Initial state: hidden and translated down */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Optimize animations for performance */
+  will-change: opacity, transform;
+}
+
+/* Revealed state: fully visible and in position */
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+/* Remove will-change after animation completes for performance */
+.reveal-on-scroll.revealed {
+  animation: cleanup-will-change 0.6s ease-out forwards;
+}
+
+@keyframes cleanup-will-change {
+  to {
+    will-change: auto;
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    transition: opacity 0.3s ease-out;
+    transform: none;
+  }
+  
+  .reveal-on-scroll.revealed {
+    transform: none;
+  }
+  
+  .hero-animate {
+    animation: heroFadeInReduced 0.4s ease-out forwards;
+  }
+  
+  .nav-animate {
+    animation: navSlideDownReduced 0.3s ease-out forwards;
+  }
+  
+  .hero-animate.delay-1 { animation-delay: 0.1s; }
+  .hero-animate.delay-2 { animation-delay: 0.2s; }
+  .hero-animate.delay-3 { animation-delay: 0.3s; }
+  .hero-animate.delay-4 { animation-delay: 0.4s; }
+}
+
+@keyframes heroFadeInReduced {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes navSlideDownReduced {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Optional: Stagger animations for child elements */
+.reveal-on-scroll.stagger-1 { transition-delay: 0.1s; }
+.reveal-on-scroll.stagger-2 { transition-delay: 0.2s; }
+.reveal-on-scroll.stagger-3 { transition-delay: 0.3s; }
+.reveal-on-scroll.stagger-4 { transition-delay: 0.4s; }
+.reveal-on-scroll.stagger-5 { transition-delay: 0.5s; }
+
+/* Alternative animation variants */
+.reveal-on-scroll.fade-up {
+  transform: translateY(40px);
+}
+
+.reveal-on-scroll.fade-down {
+  transform: translateY(-40px);
+}
+
+.reveal-on-scroll.fade-left {
+  transform: translateX(-40px);
+}
+
+.reveal-on-scroll.fade-right {
+  transform: translateX(40px);
+}
+
+.reveal-on-scroll.scale-up {
+  transform: scale(0.9);
+}
+
+/* Revealed state for all variants */
+.reveal-on-scroll.revealed.fade-up,
+.reveal-on-scroll.revealed.fade-down {
+  transform: translateY(0px);
+}
+
+.reveal-on-scroll.revealed.fade-left,
+.reveal-on-scroll.revealed.fade-right {
+  transform: translateX(0px);
+}
+
+.reveal-on-scroll.revealed.scale-up {
+  transform: scale(1);
+}

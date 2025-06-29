@@ -19,7 +19,7 @@ import {
   IconBrandTwitter,
   IconBrandLinkedin,
   IconBrandPinterest,
-} from "@tabler/icons-react";
+} from "@/components/icons";
 import {
   Accordion,
   AccordionContent,
@@ -28,40 +28,32 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
-import { motion } from "framer-motion";
-import {
-  fadeIn,
-  fadeInUp,
-  fadeInLeft,
-  fadeInRight,
-  scaleIn,
-  staggerContainer,
-  staggerItem,
-  slideInFromLeft,
-  viewportConfig,
-} from "@/lib/motion";
+
+// Simple wrapper for critical sections (no animations initially) 
+const SimpleSection = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <div className={className}>{children}</div>
+);
+
+// Optimized section wrapper using reveal-on-scroll
+const RevealSection = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <section className={`${className} reveal-on-scroll`}>
+    {children}
+  </section>
+);
 
 export default function Home() {
   return (
     <>
       <Header />
       <main className="min-h-screen bg-background text-foreground">
-        {/* Hero Section */}
-        <motion.div
-          className="min-h-[75vh] flex items-center w-full pt-20"
-          initial="initial"
-          animate="animate"
-          variants={staggerContainer}
-        >
+        {/* Hero Section - Critical path, minimal animations */}
+        <SimpleSection className="min-h-[75vh] flex items-center w-full pt-20">
           <div className="max-w-7xl mx-auto w-full px-8 lg:px-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               {/* Left Column - Content */}
               <div className="max-w-xl flex flex-col justify-center">
                 {/* What's new badge */}
-                <motion.div
-                  className="inline-flex items-center gap-3 mb-8 bg-muted rounded-full px-2 py-2 pr-4 w-fit"
-                  variants={fadeInLeft}
-                >
+                <div className="inline-flex items-center gap-3 mb-8 bg-muted rounded-full px-2 py-2 pr-4 w-fit hero-animate">
                   <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
                     Fresh drop
                   </span>
@@ -69,26 +61,19 @@ export default function Home() {
                     Mind-bending features inside
                   </span>
                   <IconChevronRight className="w-4 h-4 text-muted-foreground" />
-                </motion.div>
+                </div>
 
-                <motion.div variants={fadeInUp}>
-                  <H1 className="text-foreground mb-8 text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight">
-                    Turn wild ideas into digital magic
-                  </H1>
-                </motion.div>
+                <H1 className="text-foreground mb-8 text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight hero-animate delay-1">
+                  Turn wild ideas into digital magic
+                </H1>
 
-                <motion.div variants={fadeInUp}>
-                  <P className="text-muted-foreground text-xl mb-10 leading-relaxed">
-                    Where creativity meets code and impossible becomes
-                    inevitable. Build products that don't just work—they spark
-                    joy and change how people see the world.
-                  </P>
-                </motion.div>
+                <P className="text-muted-foreground text-xl mb-10 leading-relaxed hero-animate delay-2">
+                  Where creativity meets code and impossible becomes
+                  inevitable. Build products that don't just work—they spark
+                  joy and change how people see the world.
+                </P>
 
-                <motion.div
-                  className="flex flex-col sm:flex-row gap-4"
-                  variants={fadeInUp}
-                >
+                <div className="flex flex-col sm:flex-row gap-4 hero-animate delay-3">
                   <Button size="lg" className="px-8 py-4 text-lg">
                     Get started
                   </Button>
@@ -100,11 +85,11 @@ export default function Home() {
                     Learn more
                     <IconChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
-                </motion.div>
+                </div>
               </div>
 
               {/* Right Column - Dashboard Image */}
-              <motion.div className="relative" variants={fadeInRight}>
+              <div className="relative hero-animate delay-4">
                 <div className="bg-gradient-to-br from-muted/50 to-muted rounded-2xl p-8 shadow-2xl border border-border">
                   <div className="aspect-[4/3] bg-card rounded-xl border border-border flex items-center justify-center">
                     <div className="text-center text-muted-foreground">
@@ -115,22 +100,16 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
-        </motion.div>
+        </SimpleSection>
 
         {/* Features Section */}
-        <motion.section
-          className="min-h-[75vh] flex items-center py-24 px-8 lg:px-16"
-          initial="initial"
-          whileInView="animate"
-          viewport={viewportConfig}
-          variants={staggerContainer}
-        >
+        <RevealSection className="min-h-[75vh] flex items-center py-24 px-8 lg:px-16">
           <div className="max-w-7xl mx-auto w-full">
             {/* Header */}
-            <motion.div className="text-center mb-20" variants={fadeIn}>
+            <div className="text-center mb-20">
               <div className="inline-flex items-center gap-2 mb-8">
                 <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">
                   Features
@@ -146,15 +125,12 @@ export default function Home() {
                 needs and handles the heavy lifting while you focus on what
                 matters: creating something extraordinary.
               </P>
-            </motion.div>
+            </div>
 
             {/* Features Grid */}
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-5xl mx-auto"
-              variants={staggerContainer}
-            >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-5xl mx-auto">
               {/* Feature 1 */}
-              <motion.div className="text-left" variants={staggerItem}>
+              <div className="text-left reveal-on-scroll stagger-1">
                 <div className="mb-6">
                   <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center">
                     <IconCloudDownload className="w-7 h-7 text-white" />
@@ -168,10 +144,10 @@ export default function Home() {
                   pipelines to configure, no servers to babysit—just pure,
                   unfiltered deployment bliss.
                 </p>
-              </motion.div>
+              </div>
 
               {/* Feature 2 */}
-              <motion.div className="text-left" variants={staggerItem}>
+              <div className="text-left reveal-on-scroll stagger-2">
                 <div className="mb-6">
                   <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center">
                     <IconShield className="w-7 h-7 text-white" />
@@ -185,10 +161,10 @@ export default function Home() {
                   Military-grade protection that's so seamless, you'll forget
                   security was ever a concern.
                 </p>
-              </motion.div>
+              </div>
 
               {/* Feature 3 */}
-              <motion.div className="text-left" variants={staggerItem}>
+              <div className="text-left reveal-on-scroll stagger-3">
                 <div className="mb-6">
                   <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center">
                     <IconRefresh className="w-7 h-7 text-white" />
@@ -202,10 +178,10 @@ export default function Home() {
                   your patterns and optimize themselves, turning chaos into
                   choreographed perfection.
                 </p>
-              </motion.div>
+              </div>
 
               {/* Feature 4 */}
-              <motion.div className="text-left" variants={staggerItem}>
+              <div className="text-left reveal-on-scroll stagger-4">
                 <div className="mb-6">
                   <div className="w-14 h-14 bg-blue-600 rounded-xl flex items-center justify-center">
                     <IconShieldCheck className="w-7 h-7 text-white" />
@@ -219,22 +195,16 @@ export default function Home() {
                   watches over your applications like a guardian angel with
                   really good WiFi.
                 </p>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
-        </motion.section>
+        </RevealSection>
 
         {/* Dashboard Section */}
-        <motion.section
-          className="min-h-[75vh] bg-muted/50 flex items-center py-24 px-8 lg:px-16"
-          initial="initial"
-          whileInView="animate"
-          viewport={viewportConfig}
-          variants={staggerContainer}
-        >
+        <RevealSection className="min-h-[75vh] bg-muted/50 flex items-center py-24 px-8 lg:px-16">
           <div className="max-w-7xl mx-auto w-full">
             {/* Section Header */}
-            <motion.div className="text-center mb-20" variants={fadeIn}>
+            <div className="text-center mb-20">
               <div className="inline-flex items-center gap-2 mb-8">
                 <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">
                   Dashboard
@@ -245,18 +215,12 @@ export default function Home() {
                 <br />
                 your story
               </H1>
-            </motion.div>
+            </div>
 
             {/* Dashboard Interface */}
-            <motion.div
-              className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12"
-              variants={staggerContainer}
-            >
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
               {/* Main Dashboard Panel */}
-              <motion.div
-                className="lg:col-span-2 bg-card rounded-xl border border-border overflow-hidden"
-                variants={scaleIn}
-              >
+              <div className="lg:col-span-2 bg-card rounded-xl border border-border overflow-hidden reveal-on-scroll">
                 {/* Dashboard Image Placeholder */}
                 <div className="h-64 bg-muted/50 border-b border-border flex items-center justify-center">
                   <div className="text-center text-muted-foreground">
@@ -280,13 +244,10 @@ export default function Home() {
                     purchase history.
                   </p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Activity Feed */}
-              <motion.div
-                className="bg-card rounded-xl border border-border overflow-hidden"
-                variants={scaleIn}
-              >
+              <div className="bg-card rounded-xl border border-border overflow-hidden reveal-on-scroll stagger-1">
                 {/* Activity Feed Image Placeholder */}
                 <div className="h-64 bg-muted/50 border-b border-border flex items-center justify-center">
                   <div className="text-center text-muted-foreground">
@@ -310,19 +271,13 @@ export default function Home() {
                     semper.
                   </p>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* Bottom Feature Sections */}
-            <motion.div
-              className="grid grid-cols-1 lg:grid-cols-3 gap-6"
-              variants={staggerContainer}
-            >
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* Shopping Section */}
-              <motion.div
-                className="bg-card rounded-xl border border-border overflow-hidden"
-                variants={staggerItem}
-              >
+              <div className="bg-card rounded-xl border border-border overflow-hidden">
                 {/* Smart Search Image Placeholder */}
                 <div className="h-64 bg-muted/50 border-b border-border flex items-center justify-center">
                   <div className="text-center text-muted-foreground">
@@ -346,13 +301,10 @@ export default function Home() {
                     Find what you need before you know you need it.
                   </p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Brands Section */}
-              <motion.div
-                className="bg-card rounded-xl border border-border overflow-hidden"
-                variants={staggerItem}
-              >
+              <div className="bg-card rounded-xl border border-border overflow-hidden">
                 {/* Brand Partners Image Placeholder */}
                 <div className="h-64 bg-muted/50 border-b border-border flex items-center justify-center">
                   <div className="text-center text-muted-foreground">
@@ -376,13 +328,10 @@ export default function Home() {
                     high, mediocrity isn't even invited to the party.
                   </p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Community Section */}
-              <motion.div
-                className="bg-card rounded-xl border border-border overflow-hidden"
-                variants={staggerItem}
-              >
+              <div className="bg-card rounded-xl border border-border overflow-hidden">
                 {/* Social Network Image Placeholder */}
                 <div className="h-64 bg-muted/50 border-b border-border flex items-center justify-center">
                   <div className="text-center text-muted-foreground">
@@ -406,22 +355,16 @@ export default function Home() {
                     discoveries and influence the cultural zeitgeist.
                   </p>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
-        </motion.section>
+        </RevealSection>
 
         {/* Pricing Section */}
-        <motion.section
-          className="min-h-[75vh] flex items-center py-24 px-8 lg:px-16 bg-background"
-          initial="initial"
-          whileInView="animate"
-          viewport={viewportConfig}
-          variants={staggerContainer}
-        >
+        <RevealSection className="min-h-[75vh] flex items-center py-24 px-8 lg:px-16 bg-background">
           <div className="max-w-7xl mx-auto w-full">
             {/* Section Header */}
-            <motion.div className="text-center mb-20" variants={fadeIn}>
+            <div className="text-center mb-20">
               <div className="inline-flex items-center gap-2 mb-8">
                 <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">
                   Pricing
@@ -437,18 +380,12 @@ export default function Home() {
                 designed to multiply your success faster than you can count the
                 profits.
               </P>
-            </motion.div>
+            </div>
 
             {/* Pricing Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {/* Freelancer Plan */}
-              <motion.div
-                className="bg-card rounded-xl p-8"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewportConfig}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
+              <div className="bg-card rounded-xl p-8 reveal-on-scroll stagger-1">
                 <h3 className="text-xl font-semibold text-foreground mb-3">
                   Solo Creator
                 </h3>
@@ -492,16 +429,10 @@ export default function Home() {
                 <button className="w-full py-3 px-6 border border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
                   Buy plan
                 </button>
-              </motion.div>
+              </div>
 
               {/* Startup Plan */}
-              <motion.div
-                className="bg-card rounded-xl border-2 border-blue-600 p-8 relative"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewportConfig}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
+              <div className="bg-card rounded-xl border-2 border-blue-600 p-8 relative reveal-on-scroll stagger-2">
                 {/* Most Popular Badge */}
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <span className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium">
@@ -558,16 +489,10 @@ export default function Home() {
                 <button className="w-full py-3 px-6 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
                   Buy plan
                 </button>
-              </motion.div>
+              </div>
 
               {/* Enterprise Plan */}
-              <motion.div
-                className="bg-card rounded-xl p-8"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={viewportConfig}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
+              <div className="bg-card rounded-xl p-8 reveal-on-scroll stagger-3">
                 <h3 className="text-xl font-semibold text-foreground mb-3">
                   Digital Dynasty
                 </h3>
@@ -618,19 +543,13 @@ export default function Home() {
                 <button className="w-full py-3 px-6 border border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
                   Buy plan
                 </button>
-              </motion.div>
+              </div>
             </div>
           </div>
-        </motion.section>
+        </RevealSection>
 
         {/* Newsletter Section */}
-        <motion.section
-          className="min-h-[75vh] flex items-center py-24 px-8 lg:px-16 bg-muted/50"
-          initial="initial"
-          whileInView="animate"
-          viewport={viewportConfig}
-          variants={fadeInUp}
-        >
+        <RevealSection className="min-h-[75vh] flex items-center py-24 px-8 lg:px-16 bg-muted/50">
           <div className="max-w-4xl mx-auto w-full text-center">
             <H1 className="text-foreground mb-8 text-4xl lg:text-6xl font-bold leading-tight">
               Join the rebellion
@@ -663,26 +582,14 @@ export default function Home() {
               .
             </p>
           </div>
-        </motion.section>
+        </RevealSection>
 
         {/* Statistics Section */}
-        <motion.section
-          className="min-h-[75vh] flex items-center py-24 px-8 lg:px-16 bg-background"
-          initial="initial"
-          whileInView="animate"
-          viewport={viewportConfig}
-          variants={staggerContainer}
-        >
+        <RevealSection className="min-h-[75vh] flex items-center py-24 px-8 lg:px-16 bg-background">
           <div className="max-w-7xl mx-auto w-full">
-            <motion.div
-              className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center"
-              variants={staggerContainer}
-            >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               {/* Image */}
-              <motion.div
-                className="order-2 lg:order-1"
-                variants={slideInFromLeft}
-              >
+              <div className="order-2 lg:order-1">
                 <div className="aspect-[4/3] bg-gradient-to-br from-muted/50 to-muted rounded-2xl overflow-hidden shadow-2xl border border-border">
                   <div className="w-full h-full bg-card m-4 rounded-xl border border-border flex items-center justify-center">
                     <div className="text-center text-muted-foreground">
@@ -693,10 +600,10 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Content */}
-              <motion.div className="order-1 lg:order-2" variants={fadeInRight}>
+              <div className="order-1 lg:order-2">
                 <div className="mb-8">
                   <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">
                     Our track record
@@ -716,66 +623,57 @@ export default function Home() {
                 </P>
 
                 {/* Statistics Grid */}
-                <motion.div
-                  className="grid grid-cols-2 gap-8"
-                  variants={staggerContainer}
-                >
+                <div className="grid grid-cols-2 gap-8">
                   {/* Stat 1 */}
-                  <motion.div variants={staggerItem}>
+                  <div className="reveal-on-scroll stagger-1">
                     <div className="text-4xl font-bold text-foreground mb-2">
                       8,000+
                     </div>
                     <div className="text-muted-foreground text-sm">
                       Creators on the platform
                     </div>
-                  </motion.div>
+                  </div>
 
                   {/* Stat 2 */}
-                  <motion.div variants={staggerItem}>
+                  <div className="reveal-on-scroll stagger-2">
                     <div className="text-4xl font-bold text-foreground mb-2">
                       3%
                     </div>
                     <div className="text-muted-foreground text-sm">
                       Flat platform fee
                     </div>
-                  </motion.div>
+                  </div>
 
                   {/* Stat 3 */}
-                  <motion.div variants={staggerItem}>
+                  <div className="reveal-on-scroll stagger-3">
                     <div className="text-4xl font-bold text-foreground mb-2">
                       99.9%
                     </div>
                     <div className="text-muted-foreground text-sm">
                       Uptime guarantee
                     </div>
-                  </motion.div>
+                  </div>
 
                   {/* Stat 4 */}
-                  <motion.div variants={staggerItem}>
+                  <div className="reveal-on-scroll stagger-4">
                     <div className="text-4xl font-bold text-foreground mb-2">
                       $70M
                     </div>
                     <div className="text-muted-foreground text-sm">
                       Paid out to creators
                     </div>
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-            </motion.div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </motion.section>
+        </RevealSection>
 
         {/* Testimonials Section */}
-        <motion.section
-          className="min-h-[75vh] flex items-center py-24 px-8 lg:px-16 bg-muted/30"
-          initial="initial"
-          whileInView="animate"
-          viewport={viewportConfig}
-          variants={staggerContainer}
-        >
+        <RevealSection className="min-h-[75vh] flex items-center py-24 px-8 lg:px-16 bg-muted/30">
           <div className="max-w-7xl mx-auto w-full">
             {/* Section Header */}
-            <motion.div className="text-center mb-20" variants={fadeIn}>
+            <div className="text-center mb-20">
               <div className="inline-flex items-center gap-2 mb-8">
                 <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">
                   Testimonials
@@ -786,18 +684,12 @@ export default function Home() {
                 <br />
                 our digital family
               </H1>
-            </motion.div>
+            </div>
 
             {/* Testimonials Grid */}
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-              variants={staggerContainer}
-            >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {/* Testimonial 1 */}
-              <motion.div
-                className="bg-card rounded-xl p-6 shadow-sm"
-                variants={staggerItem}
-              >
+              <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
                   "This platform doesn't just solve problems—it anticipates
                   them. It's like having a crystal ball for my business."
@@ -815,13 +707,10 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Testimonial 2 - Larger featured testimonial */}
-              <motion.div
-                className="bg-card rounded-xl p-8 shadow-sm lg:col-span-1 lg:row-span-2 flex flex-col justify-center"
-                variants={staggerItem}
-              >
+              <div className="bg-card rounded-xl p-8 shadow-sm lg:col-span-1 lg:row-span-2 flex flex-col justify-center">
                 <p className="text-foreground mb-8 leading-relaxed text-lg">
                   "I've tried every platform out there, but this one reads my
                   mind. It's not just a tool—it's like having a digital
@@ -846,13 +735,10 @@ export default function Home() {
                     SavvyCal
                   </span>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Testimonial 3 */}
-              <motion.div
-                className="bg-card rounded-xl p-6 shadow-sm"
-                variants={staggerItem}
-              >
+              <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
                   "Finally, a platform that gets it. My productivity has tripled
                   and my stress has vanished into thin air."
@@ -870,13 +756,10 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Testimonial 4 */}
-              <motion.div
-                className="bg-card rounded-xl p-6 shadow-sm"
-                variants={staggerItem}
-              >
+              <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
                   "I was skeptical at first, but this changed everything. My
                   clients think I'm a wizard now."
@@ -894,13 +777,10 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Testimonial 5 */}
-              <motion.div
-                className="bg-card rounded-xl p-6 shadow-sm"
-                variants={staggerItem}
-              >
+              <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
                   "The learning curve? What learning curve? I was up and running
                   in minutes, creating like never before."
@@ -918,13 +798,10 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
-              {/* Testimonial 6 */}
-              <motion.div
-                className="bg-card rounded-xl p-6 shadow-sm"
-                variants={staggerItem}
-              >
+              {/* Additional testimonials */}
+              <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
                   "My competition is still figuring out what hit them. This
                   platform is my secret weapon."
@@ -942,13 +819,9 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
-              {/* Additional testimonials for the right column */}
-              <motion.div
-                className="bg-card rounded-xl p-6 shadow-sm"
-                variants={staggerItem}
-              >
+              <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
                   "Three words: game absolutely changed. This is the future and
                   I'm living in it."
@@ -966,12 +839,9 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                className="bg-card rounded-xl p-6 shadow-sm"
-                variants={staggerItem}
-              >
+              <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
                   &quot;This isn&apos;t just a tool—it&apos;s like having a
                   digital genius as your creative partner. Pure magic.&quot;
@@ -989,12 +859,9 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                className="bg-card rounded-xl p-6 shadow-sm"
-                variants={staggerItem}
-              >
+              <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
                   &quot;I&apos;ve never felt more confident about my digital
                   strategy. This platform makes the impossible feel
@@ -1013,12 +880,9 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                className="bg-card rounded-xl p-6 shadow-sm"
-                variants={staggerItem}
-              >
+              <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
                   "ROI through the roof. This investment paid for itself in the
                   first week. Best decision I've made this year."
@@ -1036,12 +900,9 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                className="bg-card rounded-xl p-6 shadow-sm"
-                variants={staggerItem}
-              >
+              <div className="bg-card rounded-xl p-6 shadow-sm">
                 <p className="text-foreground mb-6 leading-relaxed">
                   "The support team is incredible. They solved my problem before
                   I even knew I had one. Mind readers!"
@@ -1059,26 +920,17 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
-        </motion.section>
+        </RevealSection>
 
         {/* Contact Form Section */}
-        <motion.section
-          className="min-h-[75vh] bg-background flex items-center py-24 px-8 lg:px-16"
-          initial="initial"
-          whileInView="animate"
-          viewport={viewportConfig}
-          variants={staggerContainer}
-        >
+        <RevealSection className="min-h-[75vh] bg-background flex items-center py-24 px-8 lg:px-16">
           <div className="max-w-7xl mx-auto w-full">
-            <motion.div
-              className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center"
-              variants={staggerContainer}
-            >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               {/* Left Column - Form */}
-              <motion.div className="order-2 lg:order-1" variants={fadeInLeft}>
+              <div className="order-2 lg:order-1">
                 <div className="max-w-xl">
                   <H1 className="text-foreground mb-6 text-4xl lg:text-6xl font-bold leading-tight">
                     Let's work
@@ -1227,10 +1079,10 @@ export default function Home() {
                     </button>
                   </form>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Right Column - Image */}
-              <motion.div className="order-1 lg:order-2" variants={fadeInRight}>
+              <div className="order-1 lg:order-2">
                 <div className="aspect-[4/3] bg-muted rounded-xl overflow-hidden">
                   <div className="w-full h-full bg-muted/80 flex items-center justify-center">
                     <div className="text-center text-muted-foreground">
@@ -1239,22 +1091,16 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
-        </motion.section>
+        </RevealSection>
 
         {/* Team Leadership Section */}
-        <motion.section
-          className="min-h-[75vh] flex items-center py-24 px-8 lg:px-16 bg-muted/50"
-          initial="initial"
-          whileInView="animate"
-          viewport={viewportConfig}
-          variants={staggerContainer}
-        >
+        <RevealSection className="min-h-[75vh] flex items-center py-24 px-8 lg:px-16 bg-muted/50">
           <div className="max-w-7xl mx-auto w-full">
             {/* Section Header */}
-            <motion.div className="mb-20" variants={fadeIn}>
+            <div className="mb-20">
               <H1 className="text-foreground mb-8 text-4xl lg:text-6xl font-bold leading-tight">
                 Meet our
                 <br />
@@ -1265,18 +1111,12 @@ export default function Home() {
                 what we do and dedicated to delivering the best results for our
                 clients.
               </P>
-            </motion.div>
+            </div>
 
             {/* Team Grid */}
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12"
-              variants={staggerContainer}
-            >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
               {/* Leslie Alexander */}
-              <motion.div
-                className="flex items-center gap-6"
-                variants={staggerItem}
-              >
+              <div className="flex items-center gap-6">
                 <div className="w-20 h-20 bg-gradient-to-br from-pink-400 to-red-400 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-semibold text-xl">LA</span>
                 </div>
@@ -1286,13 +1126,10 @@ export default function Home() {
                   </h3>
                   <p className="text-blue-600 font-medium">Co-Founder / CEO</p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Michael Foster */}
-              <motion.div
-                className="flex items-center gap-6"
-                variants={staggerItem}
-              >
+              <div className="flex items-center gap-6">
                 <div className="w-20 h-20 bg-gradient-to-br from-slate-600 to-slate-800 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-semibold text-xl">MF</span>
                 </div>
@@ -1302,13 +1139,10 @@ export default function Home() {
                   </h3>
                   <p className="text-blue-600 font-medium">Co-Founder / CTO</p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Dries Vincent */}
-              <motion.div
-                className="flex items-center gap-6"
-                variants={staggerItem}
-              >
+              <div className="flex items-center gap-6">
                 <div className="w-20 h-20 bg-gradient-to-br from-indigo-400 to-blue-400 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-semibold text-xl">DV</span>
                 </div>
@@ -1320,13 +1154,10 @@ export default function Home() {
                     Business Relations
                   </p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Lindsay Walton */}
-              <motion.div
-                className="flex items-center gap-6"
-                variants={staggerItem}
-              >
+              <div className="flex items-center gap-6">
                 <div className="w-20 h-20 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-semibold text-xl">LW</span>
                 </div>
@@ -1338,13 +1169,10 @@ export default function Home() {
                     Front-end Developer
                   </p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Courtney Henry */}
-              <motion.div
-                className="flex items-center gap-6"
-                variants={staggerItem}
-              >
+              <div className="flex items-center gap-6">
                 <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-orange-400 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-semibold text-xl">CH</span>
                 </div>
@@ -1354,13 +1182,10 @@ export default function Home() {
                   </h3>
                   <p className="text-blue-600 font-medium">Designer</p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Tom Cook */}
-              <motion.div
-                className="flex items-center gap-6"
-                variants={staggerItem}
-              >
+              <div className="flex items-center gap-6">
                 <div className="w-20 h-20 bg-gradient-to-br from-slate-400 to-slate-600 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-semibold text-xl">TC</span>
                 </div>
@@ -1372,107 +1197,74 @@ export default function Home() {
                     Director of Product
                   </p>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
-        </motion.section>
+        </RevealSection>
 
         {/* Trusted Companies Section */}
-        <motion.section
-          className="py-20 px-8 lg:px-16 bg-background"
-          initial="initial"
-          whileInView="animate"
-          viewport={viewportConfig}
-          variants={fadeInUp}
-        >
+        <RevealSection className="py-20 px-8 lg:px-16 bg-background">
           <div className="max-w-7xl mx-auto text-center">
             <h2 className="text-3xl font-semibold text-foreground mb-16">
               In good company with digital pioneers
             </h2>
 
-            <motion.div
-              className="flex flex-wrap items-center justify-center gap-8 lg:gap-16 opacity-60"
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={viewportConfig}
-            >
+            <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-16 opacity-60">
               {/* CloudFlow */}
-              <motion.div
-                className="flex items-center gap-3"
-                variants={staggerItem}
-              >
+              <div className="flex items-center gap-3">
                 <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center">
                   <div className="w-4 h-4 bg-muted-foreground rounded"></div>
                 </div>
                 <span className="text-xl font-semibold text-foreground">
                   CloudFlow
                 </span>
-              </motion.div>
+              </div>
 
               {/* DataSync */}
-              <motion.div
-                className="flex items-center gap-3"
-                variants={staggerItem}
-              >
+              <div className="flex items-center gap-3">
                 <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center">
                   <div className="w-4 h-4 bg-muted-foreground rounded"></div>
                 </div>
                 <span className="text-xl font-semibold text-foreground">
                   DataSync
                 </span>
-              </motion.div>
+              </div>
 
               {/* FlexCore */}
-              <motion.div
-                className="flex items-center gap-3"
-                variants={staggerItem}
-              >
+              <div className="flex items-center gap-3">
                 <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center">
                   <div className="w-4 h-4 bg-muted-foreground rounded"></div>
                 </div>
                 <span className="text-xl font-semibold text-foreground">
                   FlexCore
                 </span>
-              </motion.div>
+              </div>
 
               {/* NextGen */}
-              <motion.div
-                className="flex items-center gap-3"
-                variants={staggerItem}
-              >
+              <div className="flex items-center gap-3">
                 <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center">
                   <div className="w-4 h-4 bg-muted-foreground rounded"></div>
                 </div>
                 <span className="text-xl font-semibold text-foreground">
                   NextGen
                 </span>
-              </motion.div>
+              </div>
 
               {/* StreamTech */}
-              <motion.div
-                className="flex items-center gap-3"
-                variants={staggerItem}
-              >
+              <div className="flex items-center gap-3">
                 <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center">
                   <div className="w-4 h-4 bg-muted-foreground rounded"></div>
                 </div>
                 <span className="text-xl font-semibold text-foreground">
                   StreamTech
                 </span>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
-        </motion.section>
+        </RevealSection>
 
         {/* FAQ Section */}
-        <motion.section
-          className="min-h-[75vh] flex items-center py-24 px-8 lg:px-16 bg-muted/50"
-          initial="initial"
-          whileInView="animate"
-          viewport={viewportConfig}
-          variants={staggerContainer}
-        >
+        <RevealSection className="min-h-[75vh] flex items-center py-24 px-8 lg:px-16 bg-muted/50">
           <div className="max-w-4xl mx-auto w-full">
             <H1 className="text-foreground mb-20 text-4xl lg:text-6xl font-bold leading-tight text-center">
               Questions that keep
@@ -1551,7 +1343,7 @@ export default function Home() {
               </AccordionItem>
             </Accordion>
           </div>
-        </motion.section>
+        </RevealSection>
 
         {/* Footer */}
         <footer className="bg-background py-16 px-8 lg:px-16 border-t border-border">

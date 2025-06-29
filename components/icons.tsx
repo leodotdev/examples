@@ -1,0 +1,20 @@
+// Optimized icon imports - all icons needed for the full page
+export {
+  IconWorld,
+  IconChevronRight,
+  IconChartBar,
+  IconCloudDownload,
+  IconShield,
+  IconShieldCheck,
+  IconRefresh,
+  IconSearch,
+  IconBuilding,
+  IconUsers,
+  IconCheck,
+  IconPhoto,
+  IconBrandGithub,
+  IconBrandYoutube,
+  IconBrandTwitter,
+  IconBrandLinkedin,
+  IconBrandPinterest,
+} from "@tabler/icons-react";

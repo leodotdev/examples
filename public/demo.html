@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reveal on Scroll Demo</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .spacer {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 2rem;
+            text-align: center;
+        }
+        
+        .section {
+            padding: 4rem 0;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin: 1rem;
+            max-width: 300px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+        
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+        
+        .fade-left { transform: translateX(-40px); }
+        .fade-right { transform: translateX(40px); }
+        .fade-down { transform: translateY(-40px); }
+        .scale-up { transform: scale(0.9); }
+    </style>
+    <link rel="stylesheet" href="reveal-on-scroll.css">
+</head>
+<body>
+    <div class="spacer">
+        <div>
+            <h1>Scroll down to see the reveal animations</h1>
+            <p>Elements will animate as they enter the viewport</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="section">
+            <div class="reveal-on-scroll">
+                <h2>Basic Fade Up Animation</h2>
+                <p>This element will fade in and slide up from 40px below when it enters the viewport.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="grid">
+                <div class="card reveal-on-scroll stagger-1">
+                    <h3>Card 1</h3>
+                    <p>This card animates first with a 0.1s delay.</p>
+                </div>
+                <div class="card reveal-on-scroll stagger-2">
+                    <h3>Card 2</h3>
+                    <p>This card animates second with a 0.2s delay.</p>
+                </div>
+                <div class="card reveal-on-scroll stagger-3">
+                    <h3>Card 3</h3>
+                    <p>This card animates third with a 0.3s delay.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="grid">
+                <div class="card reveal-on-scroll fade-left">
+                    <h3>Fade Left</h3>
+                    <p>This card slides in from the left.</p>
+                </div>
+                <div class="card reveal-on-scroll fade-right">
+                    <h3>Fade Right</h3>
+                    <p>This card slides in from the right.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="grid">
+                <div class="card reveal-on-scroll fade-down">
+                    <h3>Fade Down</h3>
+                    <p>This card slides down from above.</p>
+                </div>
+                <div class="card reveal-on-scroll scale-up">
+                    <h3>Scale Up</h3>
+                    <p>This card scales up from 90% to 100%.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="reveal-on-scroll">
+                <h2>Performance Benefits</h2>
+                <ul>
+                    <li>✅ Uses native IntersectionObserver API</li>
+                    <li>✅ Hardware-accelerated CSS transforms</li>
+                    <li>✅ Animations run only once</li>
+                    <li>✅ Respects prefers-reduced-motion</li>
+                    <li>✅ Graceful fallback for older browsers</li>
+                    <li>✅ Framework-agnostic vanilla JavaScript</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <script src="reveal-on-scroll.js"></script>
+</body>
+</html>
