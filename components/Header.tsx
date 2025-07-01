@@ -56,7 +56,7 @@ export default function Header() {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Product</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                  <ul className="grid w-[400px] gap-3 p-3 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                     <li className="row-span-1">
                       <NavigationMenuLink asChild>
                         <a

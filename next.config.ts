@@ -3,6 +3,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['@tabler/icons-react', 'framer-motion'],
+    optimizeServerReact: true,
+    serverMinification: true,
+    serverSourceMaps: false,
   },
   turbopack: {
     rules: {
