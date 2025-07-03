@@ -2,6 +2,7 @@
 export {
   IconWorld,
   IconChevronRight,
+  IconChevronDown,
   IconChartBar,
   IconCloudDownload,
   IconShield,
@@ -17,4 +18,10 @@ export {
   IconBrandTwitter,
   IconBrandLinkedin,
   IconBrandPinterest,
+  IconStar,
+  IconArrowRight,
+  IconMoon,
+  IconSun,
+  IconMenu2,
+  IconX,
 } from "@tabler/icons-react";

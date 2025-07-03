@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   IconMenu2,
   IconX,
@@ -27,7 +29,12 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-background fixed top-0 w-full z-50 border-b border-border nav-animate">
+    <motion.header 
+      className="bg-background fixed top-0 w-full z-50 border-b border-border"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+    >
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
@@ -215,6 +222,16 @@ export default function Header() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
+                  <Link
+                    href="/blog"
+                    className="text-sm font-semibold text-foreground transition-colors"
+                  >
+                    Blog
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
                   <a
                     href="#"
                     className="text-sm font-semibold text-foreground transition-colors"
@@ -343,6 +360,6 @@ export default function Header() {
           </div>
         </div>
       )}
-    </header>
+    </motion.header>
   );
 }
