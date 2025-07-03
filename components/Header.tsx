@@ -40,12 +40,12 @@ export default function Header() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Digital Magic Co</span>
             <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
               <div className="w-5 h-5 bg-white rounded-full opacity-90"></div>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -257,12 +257,12 @@ export default function Header() {
           ></div>
           <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-background p-6 sm:max-w-sm sm:ring-1 sm:ring-border">
             <div className="flex items-center justify-between">
-              <a href="#" className="-m-1.5 p-1.5">
+              <Link href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">Digital Magic Co</span>
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
                   <div className="w-5 h-5 bg-white rounded-full opacity-90"></div>
                 </div>
-              </a>
+              </Link>
               <button
                 type="button"
                 className="-m-2.5 rounded-md p-2.5 text-foreground"

@@ -16,7 +16,7 @@ export function StatsSection({ data }: { data: StatsData | null }) {
 
   return (
     <motion.section 
-      className="py-24 px-8 lg:px-16 bg-primary text-primary-foreground"
+      className="py-24 px-8 lg:px-16 bg-muted/30"
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, amount: 0.2 }}
@@ -24,10 +24,10 @@ export function StatsSection({ data }: { data: StatsData | null }) {
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <H1 className="mb-8 text-4xl lg:text-6xl font-bold leading-tight max-w-4xl mx-auto">
+          <H1 className="mb-8 text-4xl lg:text-6xl font-bold leading-tight max-w-4xl mx-auto text-foreground">
             {statsData.sectionTitle}
           </H1>
-          <P className="text-xl leading-relaxed max-w-3xl mx-auto opacity-90">
+          <P className="text-xl leading-relaxed max-w-3xl mx-auto text-muted-foreground">
             {statsData.sectionSubtitle}
           </P>
         </div>
@@ -45,11 +45,11 @@ export function StatsSection({ data }: { data: StatsData | null }) {
               className="text-center"
               variants={fadeInUp}
             >
-              <div className="text-5xl lg:text-6xl font-bold mb-4">
+              <div className="text-5xl lg:text-6xl font-bold mb-4 text-foreground">
                 {stat.number}
               </div>
-              <div className="text-xl font-semibold mb-2">{stat.label}</div>
-              <div className="opacity-80">{stat.description}</div>
+              <div className="text-xl font-semibold mb-2 text-foreground">{stat.label}</div>
+              <div className="text-muted-foreground">{stat.description}</div>
             </motion.div>
           ))}
         </motion.div>

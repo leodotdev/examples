@@ -1,4 +1,4 @@
-import { client } from '@/sanity/lib/client'
+import { getClient } from '@/sanity/lib/client'
 import { draftMode } from 'next/headers'
 import { 
   heroQuery, 
@@ -16,6 +16,7 @@ import { StatsSection } from '@/components/home/StatsSection'
 import { FaqSection } from '@/components/home/FaqSection'
 import { CtaSection } from '@/components/home/CtaSection'
 import Header from "@/components/Header"
+import { DraftModeIndicator } from "@/components/DraftModeIndicator"
 
 // Type definitions moved from component files
 
@@ -104,26 +105,15 @@ export interface FaqData {
 
 async function getPageData() {
   const { isEnabled } = await draftMode()
+  const client = getClient(isEnabled)
   
   const [hero, features, pricing, testimonials, stats, faq] = await Promise.all([
-    client.fetch<HeroData>(heroQuery, {}, { 
-      perspective: isEnabled ? 'previewDrafts' : 'published'
-    }),
-    client.fetch<FeaturesData>(featuresQuery, {}, { 
-      perspective: isEnabled ? 'previewDrafts' : 'published'
-    }),
-    client.fetch<PricingData>(pricingQuery, {}, { 
-      perspective: isEnabled ? 'previewDrafts' : 'published'
-    }),
-    client.fetch<TestimonialsData>(testimonialsQuery, {}, { 
-      perspective: isEnabled ? 'previewDrafts' : 'published'
-    }),
-    client.fetch<StatsData>(statsQuery, {}, { 
-      perspective: isEnabled ? 'previewDrafts' : 'published'
-    }),
-    client.fetch<FaqData>(faqQuery, {}, { 
-      perspective: isEnabled ? 'previewDrafts' : 'published'
-    }),
+    client.fetch<HeroData>(heroQuery),
+    client.fetch<FeaturesData>(featuresQuery),
+    client.fetch<PricingData>(pricingQuery),
+    client.fetch<TestimonialsData>(testimonialsQuery),
+    client.fetch<StatsData>(statsQuery),
+    client.fetch<FaqData>(faqQuery),
   ])
 
   return { hero, features, pricing, testimonials, stats, faq }
@@ -146,6 +136,7 @@ export default async function HomePage() {
         <FaqSection data={pageData.faq} />
         <CtaSection />
       </main>
+      <DraftModeIndicator />
     </>
   )
 }

@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./reveal-on-scroll.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import VisualEditing from "@/components/VisualEditing";
+import { VisualEditingProvider } from "@/components/VisualEditingProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -52,7 +52,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-          <VisualEditing />
+          <VisualEditingProvider />
         </ThemeProvider>
         <script src="/reveal-on-scroll.js" defer></script>
       </body>

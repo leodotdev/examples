@@ -1,7 +1,7 @@
 import { groq } from 'next-sanity'
 
 // Landing page sections
-export const heroQuery = groq`*[_type == "hero"][0]`
+export const heroQuery = groq`*[_type == "hero"] | order(_updatedAt desc) [0]`
 
 export const featuresQuery = groq`*[_type == "features"][0]{
   ...,
