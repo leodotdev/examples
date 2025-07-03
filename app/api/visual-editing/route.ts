@@ -1,12 +1,14 @@
 import { draftMode } from 'next/headers'
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
-export async function GET(request: NextRequest) {
-  await draftMode().enable()
+export async function GET() {
+  const draft = await draftMode()
+  await draft.enable()
   return NextResponse.json({ enabled: true })
 }
 
-export async function DELETE(request: NextRequest) {
-  await draftMode().disable()
+export async function DELETE() {
+  const draft = await draftMode()
+  await draft.disable()
   return NextResponse.json({ enabled: false })
 }

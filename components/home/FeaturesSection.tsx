@@ -14,7 +14,7 @@ import {
   IconPhoto,
 } from "@/components/icons"
 
-const iconMap: { [key: string]: any } = {
+const iconMap: { [key: string]: React.ComponentType<{ className?: string }> } = {
   IconCloudDownload,
   IconShield,
   IconRefresh,

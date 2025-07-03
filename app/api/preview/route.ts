@@ -11,7 +11,8 @@ export async function GET(request: Request) {
     return new Response('Invalid token', { status: 401 })
   }
   
-  await draftMode().enable()
+  const draft = await draftMode()
+  await draft.enable()
   
   // Redirect to the path from the fetched post
   // We'll redirect to the home page by default

@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { IconChevronRight, IconChartBar, IconPhoto } from "@/components/icons"
 import Image from 'next/image'
 import { urlForImage } from '@/sanity/lib/image'
-import { stegaClean } from '@sanity/client/stega'
 
 import type { HeroData } from '@/app/page'
 

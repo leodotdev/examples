@@ -8,6 +8,8 @@ import { IconChevronDown } from "@/components/icons"
 import type { FaqData } from '@/app/page'
 
 export function FaqSection({ data }: { data: FaqData | null }) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  
   if (!data) return null
   
   const faqData = {
@@ -16,8 +18,6 @@ export function FaqSection({ data }: { data: FaqData | null }) {
     badge: data.badge || 'FAQ',
     faqList: data.faqList || []
   }
-
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
     <motion.section 

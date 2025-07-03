@@ -18,6 +18,18 @@ import { CtaSection } from '@/components/home/CtaSection'
 import Header from "@/components/Header"
 import { DraftModeIndicator } from "@/components/DraftModeIndicator"
 
+interface SanityImageAsset {
+  _id: string
+  url: string
+  metadata?: {
+    dimensions: {
+      width: number
+      height: number
+    }
+  }
+  [key: string]: unknown
+}
+
 // Type definitions moved from component files
 
 export interface HeroData {
@@ -29,7 +41,7 @@ export interface HeroData {
   primaryButtonUrl: string
   secondaryButtonText: string
   secondaryButtonUrl: string
-  image?: any
+  image?: SanityImageAsset
 }
 
 export interface Feature {
@@ -68,7 +80,7 @@ interface Testimonial {
   authorName: string
   authorTitle: string
   authorCompany: string
-  authorAvatar?: any
+  authorAvatar?: SanityImageAsset
   rating: number
 }
 

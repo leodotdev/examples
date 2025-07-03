@@ -1,7 +1,8 @@
 import { draftMode } from 'next/headers'
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
-export async function GET(request: NextRequest) {
-  await draftMode().disable()
+export async function GET() {
+  const draft = await draftMode()
+  await draft.disable()
   return NextResponse.json({ draft: false })
 }

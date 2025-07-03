@@ -8,18 +8,51 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
+interface SanityImageAsset {
+  _id: string
+  url: string
+  alt?: string
+  metadata?: {
+    dimensions: {
+      width: number
+      height: number
+    }
+  }
+  [key: string]: unknown
+}
+
+type PortableTextBlock = {
+  _type: string
+  _key?: string
+  children?: Array<{
+    _type: string
+    _key: string
+    text?: string
+    marks?: string[]
+  }>
+  markDefs?: Array<{
+    _type: string
+    _key: string
+    [key: string]: unknown
+  }>
+  style?: string
+  level?: number
+  listItem?: string
+  [key: string]: unknown
+}
+
 interface Post {
   _id: string
   title: string
   slug: { current: string }
   excerpt: string
-  featuredImage?: any
-  content: any[]
+  featuredImage?: SanityImageAsset
+  content: PortableTextBlock[]
   publishedAt: string
   author: {
     name: string
-    image?: any
-    bio?: any[]
+    image?: SanityImageAsset
+    bio?: PortableTextBlock[]
     socialLinks?: {
       twitter?: string
       linkedin?: string
@@ -60,7 +93,7 @@ function getCategoryColor(color: string) {
 
 const portableTextComponents = {
   types: {
-    image: ({ value }: any) => (
+    image: ({ value }: { value: SanityImageAsset }) => (
       <div className="my-8">
         <Image
           src={urlForImage(value)?.width(800).height(600).url() || ''}
@@ -73,28 +106,28 @@ const portableTextComponents = {
     ),
   },
   block: {
-    h1: ({ children }: any) => (
+    h1: ({ children }: { children?: React.ReactNode }) => (
       <h1 className="text-4xl font-bold mb-6 mt-12">{children}</h1>
     ),
-    h2: ({ children }: any) => (
+    h2: ({ children }: { children?: React.ReactNode }) => (
       <h2 className="text-3xl font-bold mb-4 mt-10">{children}</h2>
     ),
-    h3: ({ children }: any) => (
+    h3: ({ children }: { children?: React.ReactNode }) => (
       <h3 className="text-2xl font-bold mb-4 mt-8">{children}</h3>
     ),
-    normal: ({ children }: any) => (
+    normal: ({ children }: { children?: React.ReactNode }) => (
       <p className="text-lg leading-relaxed mb-6">{children}</p>
     ),
-    blockquote: ({ children }: any) => (
+    blockquote: ({ children }: { children?: React.ReactNode }) => (
       <blockquote className="border-l-4 border-primary pl-6 italic text-lg my-8">
         {children}
       </blockquote>
     ),
   },
   marks: {
-    link: ({ children, value }: any) => (
+    link: ({ children, value }: { children?: React.ReactNode; value?: { href: string } }) => (
       <a
-        href={value.href}
+        href={value?.href || '#'}
         className="text-primary hover:underline"
         target="_blank"
         rel="noopener noreferrer"
@@ -102,21 +135,21 @@ const portableTextComponents = {
         {children}
       </a>
     ),
-    strong: ({ children }: any) => (
+    strong: ({ children }: { children?: React.ReactNode }) => (
       <strong className="font-bold">{children}</strong>
     ),
-    em: ({ children }: any) => <em className="italic">{children}</em>,
-    code: ({ children }: any) => (
+    em: ({ children }: { children?: React.ReactNode }) => <em className="italic">{children}</em>,
+    code: ({ children }: { children?: React.ReactNode }) => (
       <code className="bg-muted px-2 py-1 rounded text-sm font-mono">
         {children}
       </code>
     ),
   },
   list: {
-    bullet: ({ children }: any) => (
+    bullet: ({ children }: { children?: React.ReactNode }) => (
       <ul className="list-disc list-inside mb-6 space-y-2">{children}</ul>
     ),
-    number: ({ children }: any) => (
+    number: ({ children }: { children?: React.ReactNode }) => (
       <ol className="list-decimal list-inside mb-6 space-y-2">{children}</ol>
     ),
   },
@@ -125,9 +158,10 @@ const portableTextComponents = {
 export default async function BlogPostPage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const post = await getPost(params.slug)
+  const { slug } = await params
+  const post = await getPost(slug)
 
   if (!post) {
     notFound()

@@ -42,7 +42,8 @@ export default defineConfig({
       
       if (document._type === 'post') {
         const baseUrl = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'
-        return `${baseUrl}/blog/${document.slug?.current}`
+        const slug = (document as any).slug?.current
+        return slug ? `${baseUrl}/blog/${slug}` : prev
       }
       
       // For homepage sections, just return the homepage

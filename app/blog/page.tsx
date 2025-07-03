@@ -7,17 +7,29 @@ import { H1, P } from '@/components/ui/typography'
 import Image from 'next/image'
 import Link from 'next/link'
 
+interface SanityImageAsset {
+  _id: string
+  url: string
+  metadata?: {
+    dimensions: {
+      width: number
+      height: number
+    }
+  }
+  [key: string]: unknown
+}
+
 interface Post {
   _id: string
   title: string
   slug: { current: string }
   excerpt: string
-  featuredImage?: any
+  featuredImage?: SanityImageAsset
   publishedAt: string
   featured: boolean
   author: {
     name: string
-    image?: any
+    image?: SanityImageAsset
   }
   category: {
     title: string
